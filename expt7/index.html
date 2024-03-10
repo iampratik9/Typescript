@@ -1,0 +1,87 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+			margin:0%;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body ng-app="myApp">
+	<p style="margin:0px;padding:0px; background-color:violet;color:white;">
+		
+			<h1 style="margin:0px;padding:10px;background-color:rgb(109, 16, 109);color:white;">AngularJS ROUTING &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+		
+	</p>
+	<nav>
+		<a href="viewStudents.html">View Students</a>
+		<a href="internships.html">View Jobs</a>
+	</nav>
+	<div ng-view></div>
+	<p>
+		&nbsp;&nbsp;&nbsp;&nbsp;Routing in AngularJS is used when the user wants to navigate to different pages in an application but still wants it to be a single-page application. AngularJS routes enable the user to create different URLs for different content in an application. The ngRoute module helps in accessing different pages of an application without reloading the entire application.<br><br>
+
+		&nbsp;&nbsp;&nbsp;&nbsp;AngularJS also provides the ability to pass parameters in routes, which means, it allows us to dynamically generate routes and handle different data based on the parameters. We can define route patterns with placeholders for parameters, and AngularJS will extract the values from the URL and make them available in your controller. This parameterization of routes can be useful for creating dynamic pages or handling specific data queries within a single-page application.<br><br>
+
+<b>Important:</b><br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;$routeProvider is used to configure the routes. It helps to define what page to display when a user clicks a link. It accepts either when() or otherwise() method.<br>
+The ngRoute must be added as a dependency in the application module
+	</p>
+
+	<script>
+		const app = angular.module("myApp", ["ngRoute"]);
+		app.config(function ($routeProvider) {
+			$routeProvider
+				.when("/courses", {
+					templateUrl: 'course.html'
+				})
+				.when("/internships", {
+					templateUrl: 'internships.html'
+				})
+				.when("/viewStudents", {
+					templateUrl: 'viewStudents.html',
+					controller: 'StudentController'
+				})
+				.otherwise({
+					templateUrl: 'default.html'
+				});
+		});
+
+		app.controller('StudentController', function ($scope) {
+			$scope.students = [
+				{ name: 'Manish Patil', city: 'Mumbai' },
+				{ name: 'Pratik Sonawane', city: 'London' },
+				{ name: 'Omkar Tambe', city: 'Paris' }
+			];
+		});
+	</script>
+</body>
+</html>

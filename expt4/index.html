@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currency Converter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color:white;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h2 {
+        color:black;
+
+    }
+
+    .lead {
+        color:black;
+    }
+
+    .form-inline {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .result {
+        margin-top: 20px;
+    }
+
+    .result p {
+        font-weight: bold;
+        font-size: 18px;
+    }
+</style>
+</head>
+<body>
+<div class="jumbotron">
+    <div class="container">
+        <h2>Currency Converter</h2>
+        <p class="lead">Convert the currency</p>
+        <form class="form-inline" action="#">
+            <div class="form-group">
+                <input type="number" class="form-control" id="amount" placeholder="Amount">
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="currency-1" required>
+                    <option>PLN</option>
+                    <option>EUR</option>
+                    <option>USD</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="currency-2">Convert to</label>
+                <select class="form-control" id="currency-2" required>
+                    <option>EUR</option>
+                    <option>USD</option>
+                    <option>PLN</option>
+                </select>
+            </div>
+            <button class="btn calculate-btn btn-primary" id="submit_btn">Show me the result!</button>
+        </form>
+
+        <div class="result">
+            <p>
+                <span class="given-amount"></span>
+                <span class="base-currency"></span>
+                <span class="final-result"></span>
+                <span class="second-currency"></span>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+<script src="currency.js"></script>
+</html>

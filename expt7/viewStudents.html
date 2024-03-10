@@ -1,0 +1,35 @@
+<!-- viewStudents.html -->
+<!DOCTYPE html>
+<html ng-app="myApp1">
+
+<head>
+    <title>View Students</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="StudentController">
+    <h1>View Students</h1>
+    <p>
+        <ul>
+            <li ng-repeat="student in students">{{ student.name }}</li>
+        </ul>
+    </p>
+
+    <script>
+        var app = angular.module('myApp1', []);
+
+        app.controller('StudentController', function ($scope) {
+            // Sample data, replace this with your actual array of students
+            $scope.students = [
+                { name: 'Pratik Sonawane' },
+                { name: 'Rahul Maurya' },
+                { name: 'Ashish Singh' },
+                { name: 'Manan Naidu'},
+                { name: 'Shestha Ray'}
+                // Add more students as needed
+            ];
+        });
+    </script>
+</body>
+
+</html>

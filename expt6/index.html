@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventory List</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    .container {
+      width: 600px;
+      padding: 20px;
+      border: 2px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      border-radius: 8px;
+    }
+    h3 {
+      margin: 10px 0;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+    input[type="text"] {
+      padding: 8px;
+      margin-right: 10px;
+    }
+    input[type="number"] {
+      padding: 8px;
+      margin-right: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div ng-app="myApp" ng-controller="myController" class="container">
+    <h3>Fruits Inventory List</h3>
+    <ul>
+      <li ng-repeat="fruit in list">{{ fruit.name }} - ₹{{ fruit.price | number }}</li>
+    </ul>
+    <div>
+      <input type="text" ng-model="name" placeholder="Enter the fruit" />
+      <input type="number" ng-model="price" placeholder="Enter the price of fruit" />
+      <button ng-click="add()">Add the Fruit</button>
+    </div>
+  </div>
+
+  <script>
+    var myApp = angular.module("myApp", []);
+    myApp.controller("myController", function ($scope) {
+      $scope.list = [
+        { name: 'Pineapple', price: 25 },
+        { name: 'Guava', price: 45 },
+        { name: 'Oranges', price: 50 },
+        { name: 'Apple', price: 55 },
+        { name: 'Muskmelon', price: 62 }
+      ];
+
+      $scope.add = function () {
+        if ($scope.name && $scope.price) {
+          $scope.list.push({ name: $scope.name, price: $scope.price });
+          $scope.name = "";
+          $scope.price = "";
+        }
+      };
+    });
+  </script>
+</body>
+</html>
