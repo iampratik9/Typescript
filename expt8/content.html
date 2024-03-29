@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJAX Example</title>
+<link rel="stylesheet" href="./index.css">
+<script>
+  // Function to make an AJAX request
+  function loadData() {
+    var xhr = new XMLHttpRequest(); // Create XMLHttpRequest object
+
+    // Define what happens on successful data retrieval
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == XMLHttpRequest.DONE) {
+        if (xhr.status == 200) {
+          document.getElementById("output").innerHTML = xhr.responseText; // Display the retrieved data
+        } else {
+          console.error('Error:', xhr.status); // Log any errors
+        }
+      }
+    };
+
+    xhr.open("GET", "data.txt", true); // Specify the type of request (GET) and the URL
+    xhr.send(); // Send the request
+  }
+</script>
+</head>
+<body>
+  <h1>AJAX Example</h1>
+  <button style="width: 10rem; height: 2rem; border-radius: 5px; font-weight: bold; margin-bottom: 20px;" onclick="loadData()">Load Data</button>
+  <br>
+  <div id="output"></div> 
+</body>
+</html>
